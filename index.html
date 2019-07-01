@@ -23,25 +23,44 @@
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+var Questions = null;
+var LeaderBoard = null;
 
  </script>
 
 </head>
 <body>
         <script>
-            function onButtonClick()
+            function onReadData()
             {
                 var questionsRef = firebase.database().ref();
 
                 questionsRef.on("value", 
                 function(snapshot) {
-                    console.log(snapshot.val());
+                    Questions = snapshot.val().Questions;
+                    LeaderBoard = snapshot.val().LeaderBoard;
+                    console.table(Questions);
+                    console.table(LeaderBoard);
+                    
                 }, 
                 function (error) {
                     console.log("Error: " + error.code);
                 });
             }
+
+            function onWriteData()
+            {
+                if(LeaderBoard != null)
+                {
+                    LeaderBoard.push({
+                        Name: "UserE" + Math.random(), 
+                        Score: Math.random()
+                    })
+                    firebase.database().ref('LeaderBoard').set(LeaderBoard);
+                }
+            }
         </script>
-    <button onclick="onButtonClick()" type="button">Click This</button>
+    <button onclick="onReadData()" type="button">Read All Data</button>
+    <button onclick="onWriteData()" type="button">Write To LeaderBoard</button>
 </body>
 </html>

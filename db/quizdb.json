@@ -26,5 +26,23 @@
             "Index" : 1
         }
 
+    ],
+    "LeaderBoard": [
+        {
+            "Name" : "UserA",
+            "Score" : 100
+        },
+        {
+            "Name" : "UserB",
+            "Score" : 101
+        },
+        {
+            "Name" : "UserC",
+            "Score" : 102
+        },
+        {
+            "Name" : "UserD",
+            "Score" : 103
+        }
     ]
 }

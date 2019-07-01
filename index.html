@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-database.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyD3KeZDseebZHNVLvpSguL6r3hiYWpw_B8",
+    authDomain: "moviequiz-f6306.firebaseapp.com",
+    databaseURL: "https://moviequiz-f6306.firebaseio.com",
+    projectId: "moviequiz-f6306",
+    storageBucket: "",
+    messagingSenderId: "1049433845434",
+    appId: "1:1049433845434:web:7c2f3ea7d4b50975"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var database = firebase.database();
+
+ </script>
+
+</head>
+<body>
+        <script>
+            function onButtonClick()
+            {
+                var userId = firebase.auth();
+                console.log(database.ref('Questions'));
+            }
+        </script>
+    <button onclick="onButtonClick()" type="button">Click This</button>
+</body>
+</html>

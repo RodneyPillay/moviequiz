@@ -15,13 +15,14 @@
     authDomain: "moviequiz-f6306.firebaseapp.com",
     databaseURL: "https://moviequiz-f6306.firebaseio.com",
     projectId: "moviequiz-f6306",
-    storageBucket: "",
+    storageBucket: "moviequiz-f6306.appspot.com",
     messagingSenderId: "1049433845434",
     appId: "1:1049433845434:web:7c2f3ea7d4b50975"
   };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  var database = firebase.database();
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
 
  </script>
 
@@ -30,10 +31,13 @@
         <script>
             function onButtonClick()
             {
-                var userId = firebase.auth();
-                return firebase.database().ref('Questions').once('value').then(function(snapshot) {
-                    console.log(snapshot);
-                    });
+                var ref = firebase.database().ref();
+
+                ref.on("value", function(snapshot) {
+                console.log(snapshot.val());
+                }, function (error) {
+                console.log("Error: " + error.code);
+                });
             }
         </script>
     <button onclick="onButtonClick()" type="button">Click This</button>

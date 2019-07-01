@@ -31,7 +31,9 @@
             function onButtonClick()
             {
                 var userId = firebase.auth();
-                console.log(database.ref('Questions'));
+                return firebase.database().ref('Questions').once('value').then(function(snapshot) {
+                    console.log(snapshot);
+                    });
             }
         </script>
     <button onclick="onButtonClick()" type="button">Click This</button>
